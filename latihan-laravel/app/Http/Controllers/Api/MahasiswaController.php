@@ -42,7 +42,25 @@ class MahasiswaController extends Controller
 
         $perHalaman = min($request->integer('per_halaman', 10), 100);
 
-        return MahasiswaResource::collection($kueri->paginate($perHalaman));
+        $respons = MahasiswaResource::collection($kueri->paginate($perHalaman))
+            ->response()
+            ->getData(true);
+
+        if ($request->filled('fields')) {
+            $kolomTerdaftar = ['id', 'nim', 'nama', 'email', 'angkatan', 'ipk', 'aktif', 'program_studi', 'dibuat_pada'];
+            $kolomDipilih = array_values(array_intersect(
+                $kolomTerdaftar,
+                array_map('trim', explode(',', $request->query('fields')))
+            ));
+
+            if (!empty($kolomDipilih)) {
+                $respons['data'] = array_map(function ($item) use ($kolomDipilih) {
+                    return array_intersect_key($item, array_flip($kolomDipilih));
+                }, $respons['data']);
+            }
+        }
+
+        return response()->json($respons);
     }
 
     public function store(StoreMahasiswaRequest $request): JsonResponse
@@ -87,5 +105,16 @@ class MahasiswaController extends Controller
             'sukses' => true,
             'pesan' => 'Data mahasiswa berhasil dihapus',
         ]);
+    }
+
+    public function byProgramStudi(Request $request, int $programStudiId)
+    {
+        $kueri = Mahasiswa::query()
+            ->with('programStudi')
+            ->where('program_studi_id', $programStudiId);
+
+        $perHalaman = min($request->integer('per_halaman', 10), 100);
+
+        return MahasiswaResource::collection($kueri->paginate($perHalaman));
     }
 }

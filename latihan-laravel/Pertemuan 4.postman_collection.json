@@ -1,0 +1,203 @@
+{
+  "info": {
+    "_postman_id": "6b370861-3166-45e9-b00d-ebdf246577f6",
+    "name": "Pertemuan 4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58423904",
+    "_collection_link": "https://go.postman.co/collection/58423904-6b370861-3166-45e9-b00d-ebdf246577f6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "get all",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/matakuliah?",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "matakuliah"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null,
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get one",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/matakuliah/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "matakuliah",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"kode\":\"IF401\",\"nama\":\"Kecerdasan Buatan Lanjut\",\"sks\":3,\"semester\":7}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/matakuliah",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "matakuliah"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "put",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"sks\":4}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/matakuliah/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "matakuliah",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/matakuliah/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "matakuliah",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "mahasiswa by prodi",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "mahasiswa fields",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "matakuliah fields",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

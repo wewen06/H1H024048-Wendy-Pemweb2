@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\MahasiswaController;
+use App\Http\Controllers\Api\MatakuliahController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/status', function () {
@@ -11,4 +12,7 @@ Route::get('/status', function () {
     ]);
 });
 
+Route::get('/program-studi/{programStudiId}/mahasiswa', [MahasiswaController::class, 'byProgramStudi']);
+
 Route::apiResource('mahasiswa', MahasiswaController::class);
+Route::apiResource('matakuliah', MatakuliahController::class);
